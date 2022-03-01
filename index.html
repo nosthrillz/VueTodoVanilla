@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VueTodo</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+</head>
+<body>
+    <div id="app">
+        <div class="todo-wrapper">
+            <h1>Vue ToDo</h1>
+            <div class="todo-inputs">
+                <input v-model="currentText" @keyup.enter="addTodo" placeholder="Write a todo..." type="text"/>
+                <button @click="addTodo">Add</button>
+            </div>
+            <ul class="todo-list">
+                <li v-for="(todo, index) in todos" key="index" :class="todoItemClass(todo.status)">
+                    <p v-show="!todo.inEdit">{{todo.text}}</p>
+                    <input v-show="todo.inEdit" v-model="newText" @keyup.enter="saveEdit(index)"/>
+                    <button v-show="todo.inEdit" @click="saveEdit(index)" class="material-icons orange">save</button>
+                    <select v-model="todo.status" @change="updateStatus($event, index)" :class="selectClass(todo.status)">
+                        <option v-for="status in statuses">{{status}}</option>
+                    </select>
+                    <button @click="launchEdit(index)" class="material-icons blue">edit</button>
+                    <button @click="removeTodo(index)" class="material-icons red">delete</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,180 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#app {
+    margin-left: auto;
+    margin-right: auto;
+    display: grid;
+    place-items: center;
+}
+
+h1 {
+    text-align: center;
+}
+
+p {
+    margin: 0;
+    padding: 0;
+}
+
+.todo-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: clamp(250px, 100%, 500px);
+    gap: 1rem;
+}
+
+/* Inputs */
+.todo-inputs {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    font-size: 1rem;
+}
+
+.todo-inputs input {
+    flex: 1;
+    padding: .75em;
+    border-radius: .5em;
+    border: none;
+    background: hsl(200deg, 100%, 95%);
+}
+
+.todo-inputs button {
+    padding: .5em .75em;
+    border-radius: .25em;
+    border: none;
+    background: hsl(200deg, 100%, 45%);
+    color: white;
+    letter-spacing: .1ch;
+    cursor: pointer;
+}
+
+.todo-inputs button:hover, .todo-inputs button:focus {
+    background: hsl(200deg, 100%, 40%);
+}
+
+/* Status selector */
+
+select {
+    border: none;
+    border-radius: .25em;
+    padding: .25em;
+}
+
+select.todo {
+    color: hsl(0deg, 50%, 40%);
+}
+
+select.started {
+    color: hsl(40deg, 50%, 40%);
+}
+
+select.complete {
+    color: hsl(120deg, 50%, 40%);
+}
+
+/* List */
+.todo-list {
+    margin: 0;
+    padding: 1em;
+    border-top: 3px solid hsl(200deg, 100%, 45%);
+    background: linear-gradient(hsl(200deg, 100%, 95%), white);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    position: relative;
+}
+
+.todo-list>li {
+    list-style-type: none;
+    margin: 0;
+    background: hsl(200deg, 100%, 90%);
+    border-radius: 0 1em;
+    padding: .5em;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-items: center;
+    position: relative;
+}
+
+.todo-list>li.todo {
+    background: hsl(0deg, 50%, 90%);
+}
+
+.todo-list>li.started {
+    background: hsl(40deg, 50%, 90%);
+}
+
+.todo-list>li.complete {
+    background: hsl(120deg, 50%, 90%);
+}
+
+.animateIn {
+    animation: popIn 0.5s ease-in-out forwards;
+}
+
+@keyframes popIn {
+    from {
+        left: -150%;
+        opacity: 0;
+    }
+
+    to {
+        left: 0;
+        opacity: 1;
+    }
+}
+
+.todo-list>li p, .todo-list>li input {
+    color: hsl(200deg, 100%, 15%);
+    font-size: 1rem;
+    font-weight: bold;
+    justify-self: flex-start;
+    flex: 1;
+    padding-left: 0.25em;
+    padding-top: 1px;
+}
+
+.todo-list>li input {
+    border: none;
+    padding: .25em;
+    border-radius: .5em;
+}
+
+.todo-list>li button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.red {
+    color: hsl(0deg, 75%, 45%);
+}
+
+.blue {
+    color: hsl(200deg, 100%, 45%);
+}
+
+.orange {
+    color: hsl(30deg, 100%, 45%);
+}
+
+.red:hover, .red:focus {
+    color: hsl(0deg, 75%, 40%);
+}
+
+.blue:hover, .blue:focus {
+    color: hsl(200deg, 100%, 40%);
+}
+
+.orange:hover, .orange:focus {
+    color: hsl(30deg, 75%, 40%);
+}
